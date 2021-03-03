@@ -48,7 +48,7 @@ async def roll(ctx, arg):
 
 @bot.command()
 async def help(ctx):
-	embed = discord.Embed(color = 0xff9900, title = 'Команды', description=information['a'])
+	embed = discord.Embed(color = 0xff0000, title = 'Команды', description=information['a'])
 	await ctx.send(embed = embed)
         
 @bot.command()
@@ -73,10 +73,10 @@ async def sayemb(ctx, name, *, arg):
 	author = ctx.message.author
 	await ctx.message.delete()
 	if name == 'Жирный':
-		embed = discord.Embed(color = 0xff9900, title = arg, description="")
+		embed = discord.Embed(color = 0xff0000, title = arg, description="")
 		await ctx.send(embed = embed)
 	elif name == 'Тонкий':
-		embed = discord.Embed(color = 0xff9900, title = "", description=arg)
+		embed = discord.Embed(color = 0xff0000, title = "", description=arg)
 		await ctx.send(embed = embed)
 	else:
 		await ctx.send(f'{author.mention}, выберите шрифт.')
