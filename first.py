@@ -9,6 +9,7 @@ from help import information
 import json
 
 bot = commands.Bot(command_prefix = settings['prefix'], help_command=None)
+bot.remove_command('help')
 
 @bot.command() # Не передаём аргумент pass_context, так как он был нужен в старых версиях.
 async def hello(ctx, arg): # Создаём функцию и передаём аргумент ctx.
