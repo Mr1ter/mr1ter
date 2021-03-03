@@ -2,6 +2,7 @@ import discord
 import random
 import json
 import asyncio
+import os
 from discord.ext import commands
 from config import settings
 from help import information
