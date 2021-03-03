@@ -8,7 +8,6 @@ from config import settings
 from help import information
 
 bot = commands.Bot(command_prefix = settings['prefix'], help_command=None)
-bot.remove_command('help')
 
 @bot.command() 
 async def hello(ctx, arg): 
@@ -46,7 +45,7 @@ async def roll(ctx, arg):
 	await ctx.send(g)
 
 @bot.command()
-async def help(ctx):
+async def commands(ctx):
 	embed = discord.Embed(color = 0xff0000, title = 'Команды', description='Префикс бота - !? \nroll - кинуть кубик \nr - ответ на вопрос (Да/Нет) \nfunny - :) \nsay - скажет за Вас всё что угодно! \nsayemb Шрифт(Жирный/Тонкий) текст - текст в ембед \ninvite - ссылка приглашение бота на свой сервер!')
 	await ctx.send(embed = embed)
         
