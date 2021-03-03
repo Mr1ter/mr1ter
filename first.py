@@ -6,7 +6,6 @@ import os
 from discord.ext import commands
 from config import settings
 from help import information
-import json
 
 bot = commands.Bot(command_prefix = settings['prefix'], help_command=None)
 bot.remove_command('help')
