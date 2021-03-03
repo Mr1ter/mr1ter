@@ -47,7 +47,6 @@ async def roll(ctx, arg):
 
 @bot.command()
 async def help(ctx):
-	f=open('h.txt', 'r')
 	embed = discord.Embed(color = 0xff9900, title = 'Команды', description=information['a'])
 	await ctx.send(embed = embed)
         
