@@ -81,5 +81,5 @@ async def sayemb(ctx, name, *, arg):
 	else:
 		await ctx.send(f'{author.mention}, выберите шрифт.')
 	
-	
-bot.run(settings['token'])
+token = os.environ.get('BOT_TOKEN')
+bot.run(token)
