@@ -48,7 +48,7 @@ async def roll(ctx, arg):
 
 @bot.command()
 async def help(ctx):
-	embed = discord.Embed(color = 0xff0000, title = 'Команды', description='Префикс бота - !? \nroll - кинуть кубик \nr - ответ на вопрос (Да/Нет) \nfunny - :) \nsay - скажет за Вас всё что угодно! \nsayemb Шрифт(Жирный/Тонкий) текст - текст в ембед')
+	embed = discord.Embed(color = 0xff0000, title = 'Команды', description='Префикс бота - !? \nroll - кинуть кубик \nr - ответ на вопрос (Да/Нет) \nfunny - :) \nsay - скажет за Вас всё что угодно! \nsayemb Шрифт(Жирный/Тонкий) текст - текст в ембед \ninvite - ссылка приглашение бота на свой сервер!')
 	await ctx.send(embed = embed)
         
 @bot.command()
