@@ -80,6 +80,12 @@ async def sayemb(ctx, name, *, arg):
 		await ctx.send(embed = embed)
 	else:
 		await ctx.send(f'{author.mention}, выберите шрифт.')
+
+@bot.command()
+async def invite(ctx):
+	embed = discord.Embed(color = 0xff0000, title = 'Ссылка-приглашение бота на личный сервер', description='https://discordapp.com/oauth2/authorize?&client_id=815741276984967238&scope=bot&permissions=0')
+	await ctx.send(embed = embed)
+	
 	
 token = os.environ.get('BOT_TOKEN')
 bot.run(str(token))
