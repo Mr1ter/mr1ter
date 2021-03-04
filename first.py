@@ -50,30 +50,18 @@ async def help(ctx):
 	await ctx.send(embed = embed)
         
 @bot.command()
-async def spam(ctx, aor=None, *, arg = None):
-	a = ctx.message.author
-	if aor == 'bесконечна':
-		await ctx.message.delete()
-		await ctx.send(f'Нехороший же ты человек, {a.mention}!')
-		b=0
-		print(f'{a.mention} запустил спам!')
-		while b <= 59:
-			await ctx.send(arg)
-			b = b + 1
-			print('Спам в процессе:', b, '/ 60!')
-	else:
-		await ctx.send("Гуляй)")
-		print(f'{a.mention} попытался запустить спам!')
-		
+async def spam(ctx):
+	await ctx.send(":banana:")
 
 @bot.command()
 async def sayemb(ctx, name, *, arg):
 	author = ctx.message.author
-	await ctx.message.delete()
 	if name == 'Жирный':
+		await ctx.message.delete()
 		embed = discord.Embed(color = 0xff0000, title = arg, description="")
 		await ctx.send(embed = embed)
 	elif name == 'Тонкий':
+		await ctx.message.delete()
 		embed = discord.Embed(color = 0xff0000, title = "", description=arg)
 		await ctx.send(embed = embed)
 	else:
