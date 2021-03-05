@@ -48,10 +48,6 @@ async def roll(ctx, arg):
 async def help(ctx):
 	embed = discord.Embed(color = 0xff0000, title = 'Команды', description='Префикс бота - !? \nroll - кинуть кубик \nr - ответ на вопрос (Да/Нет) \nfunny - :) \nsay - скажет за Вас всё что угодно! \nsayemb Шрифт(Жирный/Тонкий) текст - текст в ембед \ninvite - ссылка приглашение бота на свой сервер! \ninfo - инфо о боте')
 	await ctx.send(embed = embed)
-        
-@bot.command()
-async def spam(ctx):
-	await ctx.send(":banana:")
 
 @bot.command()
 async def sayemb(ctx, name, *, arg):
