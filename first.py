@@ -17,7 +17,7 @@ async def hello(ctx, arg):
 
 @bot.command()
 async def say(ctx, *, arg):
-	if ctx.message.author.id == '426699376090677258':
+	if (ctx.author.id==426699376090677258):
 		await ctx.message.delete()
 		await ctx.send(arg)
 	else:
@@ -54,7 +54,7 @@ async def help(ctx):
 
 @bot.command()
 async def sayemb(ctx, name, *, arg):
-	if ctx.message.author.id == '426699376090677258':
+	if (ctx.author.id==426699376090677258):
 		author = ctx.message.author
 		if name == 'Жирный':
 			await ctx.message.delete()
