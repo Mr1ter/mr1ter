@@ -80,25 +80,18 @@ async def info(ctx):
 	await ctx.send(embed = embed)
 
 @bot.command()
+@commands.has_permissions(ban_members=True)
 async def ban(ctx, member: discord.Member, *, reason=None):
-	author = ctx.message.author
-	if ctx.message.author.server_permissions.ban:
-		e=discord.Embed(color=0xff0000, title=None, description=f'{member.mention} забанен! Причина: {reason}.')
-		await ctx.send(embed=e)
-		await member.ban(reason=reason)
-	else:
-		await ctx.send(f'{author.mention}, у Вас нет прав на использование данной команды.')
+	e=discord.Embed(color=0xff0000, title=None, description=f'{member.mention} забанен! Причина: {reason}.')
+	await ctx.send(embed=e)
+	await member.ban(reason=reason)
 
 @bot.command()
 @commands.has_permissions(kick_members=True)
 async def kick(ctx, member: discord.Member, *, reason=None):
-	author = ctx.message.author
-	if ctx.message.author.server_permissions.kick:
-		e=discord.Embed(color=0xff0000, title=None, description=f'{member.mention} кикнут! Причина: {reason}.')
-		await ctx.send(embed=e)
-		await member.kick(reason=reason)
-	else:
-		await ctx.send(f'{author.mention}, у Вас нет прав на использование данной команды.')
+	e=discord.Embed(color=0xff0000, title=None, description=f'{member.mention} кикнут! Причина: {reason}.')
+	await ctx.send(embed=e)
+	await member.kick(reason=reason)
 	
 token = os.environ.get('BOT_TOKEN')
 bot.run(str(token))
