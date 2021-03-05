@@ -17,8 +17,11 @@ async def hello(ctx, arg):
 
 @bot.command()
 async def say(ctx, *, arg):
-	await ctx.message.delete()
-	await ctx.send(arg)
+	if ctx.message.author.id == '426699376090677258':
+		await ctx.message.delete()
+		await ctx.send(arg)
+	else:
+		print("")
 	
 @bot.command()
 async def r(ctx):
@@ -51,17 +54,20 @@ async def help(ctx):
 
 @bot.command()
 async def sayemb(ctx, name, *, arg):
-	author = ctx.message.author
-	if name == 'Жирный':
-		await ctx.message.delete()
-		embed = discord.Embed(color = 0xff0000, title = arg, description="")
-		await ctx.send(embed = embed)
-	elif name == 'Тонкий':
-		await ctx.message.delete()
-		embed = discord.Embed(color = 0xff0000, title = "", description=arg)
-		await ctx.send(embed = embed)
+	if ctx.message.author.id == '426699376090677258':
+		author = ctx.message.author
+		if name == 'Жирный':
+			await ctx.message.delete()
+			embed = discord.Embed(color = 0xff0000, title = arg, description="")
+			await ctx.send(embed = embed)
+		elif name == 'Тонкий':
+			await ctx.message.delete()
+			embed = discord.Embed(color = 0xff0000, title = "", description=arg)
+			await ctx.send(embed = embed)
+		else:
+			await ctx.send(f'{author.mention}, выберите шрифт.')
 	else:
-		await ctx.send(f'{author.mention}, выберите шрифт.')
+		print("")
 
 @bot.command()
 async def invite(ctx):
