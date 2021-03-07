@@ -47,13 +47,15 @@ async def funny(ctx):
 
 @bot.command()
 async def roll(ctx, arg=None):
-	author = ctx.message.author
-	B=int(arg)
-	A=0
-	g=int(random.uniform(A, B))
-	await ctx.send(f'Кубик кинут... {author.mention}')
-	await ctx.send('```Ваше число:```')
-	await ctx.send(g)
+	if arg==None:
+		await ctx.send("Напишите конечное число.")
+	else:
+		author = ctx.message.author
+		B=int(arg)
+		A=0
+		g=int(random.uniform(A, B))
+		await ctx.send(f'Кубик кинут... {author.mention}')
+		await ctx.send('```Ваше число:```, \ng')
 
 @bot.command()
 async def help(ctx):
