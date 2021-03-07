@@ -49,7 +49,7 @@ async def roll(ctx, arg):
 
 @bot.command()
 async def help(ctx):
-	embed = discord.Embed(color = 0xff0000, title = 'Команды', description='Префикс бота - !? \nroll - кинуть кубик \nr - ответ на вопрос (Да/Нет) \nfunny - :) \ninvite - ссылка приглашение бота на свой сервер! \ninfo - инфо о боте \nban - забанить участника \nkick - кикнуть участника')
+	embed = discord.Embed(color = 0xff0000, title = 'Команды', description='Префикс бота - !? \nroll - кинуть кубик \nr - ответ на вопрос (Да/Нет) \nfunny - :) \nban - забанить участника \nkick - кикнуть участника \npoll - голсование \ninvite - ссылка приглашение бота на свой сервер! \ninfo - инфо о боте')
 	await ctx.send(embed = embed)
 
 @bot.command()
@@ -92,6 +92,15 @@ async def kick(ctx, member: discord.Member, *, reason=None):
 	e=discord.Embed(color=0xff0000, title=None, description=f'{member.mention} кикнут! Причина: {reason}.')
 	await ctx.send(embed=e)
 	await member.kick(reason=reason)
+	
+@bot.command()
+async def poll(ctx, *, arg):
+    author = ctx.message.author
+    await ctx.message.delete()
+    emb = discord.Embed(title=f'Голосование от {author.name}!', description=f'{arg}', color=0xff0000)
+    message = await ctx.send(embed=emb)
+    await message.add_reaction('✅')
+    await message.add_reaction('❌')
 	
 token = os.environ.get('BOT_TOKEN')
 bot.run(str(token))
