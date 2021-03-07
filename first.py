@@ -9,6 +9,13 @@ from help import information
 
 bot = commands.Bot(command_prefix = settings['prefix'], help_command=None)
 
+@bot.event
+async def on_command_error(ctx, error):
+    if isinstance(error, commands.MissingRequiredArgument):
+        await ctx.send('Упомяните пользователя.')
+    if isinstance(error, commands.MissingPermissions):
+        await ctx.send("У Вас нет прав на использование данной команды.")
+
 @bot.command() 
 async def hello(ctx, arg): 
     author = ctx.message.author 
@@ -16,7 +23,7 @@ async def hello(ctx, arg):
     await ctx.send(f'Привет, {author.mention}!')
 
 @bot.command()
-async def say(ctx, *, arg):
+async def say(ctx, *, arg=None):
 	if (ctx.author.id==426699376090677258):
 		await ctx.message.delete()
 		await ctx.send(arg)
@@ -38,7 +45,7 @@ async def funny(ctx):
 	await ctx.send('АХААХААХХАХАХААХАХАХААХАХАХААХААХХАХАХААХАХАХААХАХАХААХААХХАХАХААХАХАХААХАХАХААХААХХАХАХААХАХАХААХАХАХААХААХХАХАХААХАХАХААХАХАХААХААХХАХАХААХАХАХААХАХАХААХААХХАХАХААХАХАХААХАХАХААХААХХАХАХААХАХАХААХАХАХААХААХХАХАХААХАХАХААХАХАХААХААХХАХАХААХАХАХААХАХ')
 
 @bot.command()
-async def roll(ctx, arg):
+async def roll(ctx, arg=None):
 	author = ctx.message.author
 	B=int(arg)
 	A=0
@@ -53,7 +60,7 @@ async def help(ctx):
 	await ctx.send(embed = embed)
 
 @bot.command()
-async def sayemb(ctx, name, *, arg):
+async def sayemb(ctx, name, *, arg=None):
 	if (ctx.author.id==426699376090677258):
 		author = ctx.message.author
 		if name == 'Жирный':
@@ -94,7 +101,7 @@ async def kick(ctx, member: discord.Member, *, reason=None):
 	await member.kick(reason=reason)
 	
 @bot.command()
-async def poll(ctx, *, arg):
+async def poll(ctx, *, arg=None):
     author = ctx.message.author
     await ctx.message.delete()
     emb = discord.Embed(title=f'Голосование от {author.name}!', description=f'{arg}', color=0xff0000)
