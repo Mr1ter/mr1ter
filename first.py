@@ -17,12 +17,14 @@ async def on_command_error(ctx, error):
     if isinstance(error, commands.MissingPermissions):
         await ctx.send("У Вас нет прав на использование данной команды.")
 
+# Приветствие
 @bot.command() 
 async def hello(ctx, arg): 
     author = ctx.message.author 
 
     await ctx.send(f'Привет, {author.mention}!')
 
+# Говорилка (доступно только создателю бота)
 @bot.command()
 async def say(ctx, *, arg=None):
 	if (ctx.author.id==426699376090677258):
@@ -31,6 +33,7 @@ async def say(ctx, *, arg=None):
 	else:
 		print("")
 	
+# Да/Нет
 @bot.command()
 async def r(ctx):
 	author = ctx.message.author
@@ -39,12 +42,12 @@ async def r(ctx):
 		await ctx.send(f'Да, {author.mention}.')
 	else:
 		await ctx.send(f'Нет, {author.mention}.')
-
+# Бот смеётся
 @bot.command()
 async def funny(ctx):
 	await ctx.message.delete()
 	await ctx.send('АХААХААХХАХАХААХАХАХААХАХАХААХААХХАХАХААХАХАХААХАХАХААХААХХАХАХААХАХАХААХАХАХААХААХХАХАХААХАХАХААХАХАХААХААХХАХАХААХАХАХААХАХАХААХААХХАХАХААХАХАХААХАХАХААХААХХАХАХААХАХАХААХАХАХААХААХХАХАХААХАХАХААХАХАХААХААХХАХАХААХАХАХААХАХАХААХААХХАХАХААХАХАХААХАХ')
-
+# Кубик
 @bot.command()
 async def roll(ctx, arg=None):
 	if arg==None:
@@ -56,12 +59,12 @@ async def roll(ctx, arg=None):
 		g=int(random.uniform(A, B))
 		await ctx.send(f'Кубик кинут... {author.mention}')
 		await ctx.send('```Ваше число:```, \ng')
-
+# Помощь
 @bot.command()
 async def help(ctx):
 	embed = discord.Embed(color = 0xff0000, title = 'Команды', description='Префикс бота - !? \nroll - кинуть кубик \nr - ответ на вопрос (Да/Нет) \nfunny - :) \nban - забанить участника \nkick - кикнуть участника \npoll - голсование \ninvite - ссылка приглашение бота на свой сервер! \ninfo - инфо о боте')
 	await ctx.send(embed = embed)
-
+# Сказать в емб (доступна только создателю бота)
 @bot.command()
 async def sayemb(ctx, name, *, arg=None):
 	if (ctx.author.id==426699376090677258):
@@ -78,31 +81,31 @@ async def sayemb(ctx, name, *, arg=None):
 			await ctx.send(f'{author.mention}, выберите шрифт.')
 	else:
 		print("")
-
+# Инвайт
 @bot.command()
 async def invite(ctx):
 	embed = discord.Embed(color = 0xff0000, title = 'Ссылка-приглашение бота на личный сервер', description='https://discordapp.com/oauth2/authorize?&client_id=815741276984967238&scope=bot&permissions=0')
 	await ctx.send(embed = embed)
-
+# Информация
 @bot.command()
 async def info(ctx):
 	embed = discord.Embed(color = 0xff0000, title = 'Информация', description='Создатель: 𝕄𝕣𝕚𝕥𝕖𝕣.ink#5540 \nКодер: Mäster#3004 \nСсылка на официальный сервер бота: https://discord.gg/rHMzm33DDD')
 	await ctx.send(embed = embed)
-
+# Бан
 @bot.command()
 @commands.has_permissions(ban_members=True)
 async def ban(ctx, member: discord.Member, *, reason=None):
 	e=discord.Embed(color=0xff0000, title=None, description=f'{member.mention} забанен! Причина: {reason}.')
 	await ctx.send(embed=e)
 	await member.ban(reason=reason)
-
+# Кик
 @bot.command()
 @commands.has_permissions(kick_members=True)
 async def kick(ctx, member: discord.Member, *, reason=None):
 	e=discord.Embed(color=0xff0000, title=None, description=f'{member.mention} кикнут! Причина: {reason}.')
 	await ctx.send(embed=e)
 	await member.kick(reason=reason)
-	
+# Голосование
 @bot.command()
 async def poll(ctx, *, arg=None):
     author = ctx.message.author
