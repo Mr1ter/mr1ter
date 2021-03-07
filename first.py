@@ -5,9 +5,10 @@ import asyncio
 import os
 from discord.ext import commands
 from config import settings
-from help import information
+from discord.ext import commands,tasks
+from discord.ext.commands import has_permissions, CheckFailure
 
-bot = commands.Bot(command_prefix = settings['prefix'], help_command=None)
+bot = commands.Bot(command_prefix = '!?', help_command=None)
 
 @bot.event
 async def on_command_error(ctx, error):
