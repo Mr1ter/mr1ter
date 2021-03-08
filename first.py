@@ -58,7 +58,7 @@ async def roll(ctx, arg=None):
 		A=0
 		g=int(random.uniform(A, B))
 		await ctx.send(f'Кубик кинут... {author.mention}')
-		await ctx.send('```Ваше число:``` \n{g}')
+		await ctx.send(f'```Ваше число:``` \n{g}')
 # Помощь
 @bot.command()
 async def help(ctx):
