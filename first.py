@@ -17,7 +17,7 @@ async def on_command_error(ctx, error):
     if isinstance(error, commands.MissingPermissions):
         await ctx.send(embed=discord.Embed(title="У-упс...", description='У Вас нет прав на использование данной команды.', color=0xff0000))
     if isinstance(error, commands.CommandNotFound):
-        await ctx.send(embed=discord.Embed(title="У-упс...", description='Данной команды не существует.', color=0xff0000))
+        await ctx.send(embed=discord.Embed(title="У-упс...", description='Данной команды не существует. \nДля того, чтобы узнать, какие у меня команды, пропишите ``!?help``.', color=0xff0000))
 
 # Приветствие
 @bot.command() 
