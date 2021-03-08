@@ -13,9 +13,11 @@ bot = commands.Bot(command_prefix = '!?', help_command=None)
 @bot.event
 async def on_command_error(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
-        await ctx.send('Упомяните пользователя.')
+        await ctx.send(embed=discord.Embed(title="У-упс...", description='Упомяните пользователя.', color=0xff0000))
     if isinstance(error, commands.MissingPermissions):
-        await ctx.send("У Вас нет прав на использование данной команды.")
+        await ctx.send(embed=discord.Embed(title="У-упс...", description='У Вас нет прав на использование данной команды.', color=0xff0000))
+    if isinstance(error, commands.CommandNotFound):
+        await ctx.send(embed=discord.Embed(title="У-упс...", description='Данной команды не существует.', color=0xff0000))
 
 # Приветствие
 @bot.command() 
