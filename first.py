@@ -91,7 +91,7 @@ async def invite(ctx):
 # Информация
 @bot.command()
 async def info(ctx):
-	embed = discord.Embed(color = 0xff0000, title = 'Информация', description='Создатель: 𝕄𝕣𝕚𝕥𝕖𝕣.ink#5540 \nКодер: Mäster#3004 \nСсылка на официальный сервер бота: https://discord.gg/rHMzm33DDD')
+	embed = discord.Embed(color = 0xff0000, title = 'Информация', description='Создатель: 𝕄𝕣𝕚𝕥𝕖𝕣.ink#5540 \nКодер: Mäster#3004, dead.ink#2796 \nСсылка на официальный сервер бота: https://discord.gg/rHMzm33DDD')
 	await ctx.send(embed = embed)
 # Бан
 @bot.command()
