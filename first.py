@@ -53,14 +53,14 @@ async def funny(ctx):
 @bot.command()
 async def roll(ctx, arg=None):
 	if arg==None:
-		await ctx.send(embed=discord.Embed(title="У-упс...", description='Введите число.', color=0xff0000)
+		await ctx.send(embed=discord.Embed(title="У-упс...", description='Введите число.', color=0xff0000))
 	else:
 		author = ctx.message.author
 		B=int(arg)
 		A=0
 		g=int(random.uniform(A, B)
-		await ctx.send(f'Кубик кинут... {author.mention} \n```Ваше число:``` \n{g}')
-# Помощь
+		await ctx.send(f'``Ваше число:`` \n{g}')
+#Помощь
 @bot.command()
 async def help(ctx):
 	embed = discord.Embed(color = 0xff0000, title = 'Команды', description='Префикс бота - !? \nroll - кинуть кубик \nr - ответ на вопрос (Да/Нет) \nfunny - :) \nban - забанить участника \nkick - кикнуть участника \npoll - голсование \ninvite - ссылка приглашение бота на свой сервер! \ninfo - инфо о боте')
