@@ -58,7 +58,7 @@ async def roll(ctx, arg=None):
 		author = ctx.message.author
 		B=int(arg)
 		A=0
-		g=int(random.uniform(A, B)
+		g=int(random.uniform(A, B))
 		await ctx.send(f'``Ваше число:`` \n{g}')
 #Помощь
 @bot.command()
