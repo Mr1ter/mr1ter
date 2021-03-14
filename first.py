@@ -53,7 +53,7 @@ async def funny(ctx):
 @bot.command()
 async def roll(ctx, arg=None):
 	if arg==None:
-		await ctx.send("Вы не ввели число.")
+		await ctx.send(embed= discord.Embed(color = 0xff0000, title = 'У-упс...', description='Введите число.'))
 	else:
 		author = ctx.message.author
 		B=int(arg)
