@@ -29,7 +29,7 @@ async def hello(ctx, arg):
 # Говорилка (доступно только создателю бота)
 @bot.command()
 async def say(ctx, *, arg=None):
-	if (ctx.author.id==426699376090677258):
+	if (ctx.author.id==426699376090677258 or ctx.author.id==715160316425797722):
 		await ctx.message.delete()
 		await ctx.send(arg)
 	else:
@@ -68,7 +68,7 @@ async def help(ctx):
 # Сказать в емб (доступна только создателю бота)
 @bot.command()
 async def sayemb(ctx, name, *, arg=None):
-	if (ctx.author.id==426699376090677258):
+	if (ctx.author.id==426699376090677258 or ctx.author.id==715160316425797722):
 		author = ctx.message.author
 		if name == 'Жирный':
 			await ctx.message.delete()
