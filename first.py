@@ -54,7 +54,7 @@ async def roll(ctx, arg=None):
 		B=int(arg)
 		A=0
 		g=int(random.uniform(A, B))
-		await ctx.send(f'```Ваше число: {g}```')
+		await ctx.send(embed = discord.Embed(color = 0xff0000, title = 'Кубик кинут!', description=f'Выпало число: {g}'))
 #Помощь
 @bot.command()
 async def help(ctx):
