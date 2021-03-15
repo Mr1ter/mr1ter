@@ -107,11 +107,11 @@ async def poll(ctx, *, arg=None):
 		await ctx.send(embed=embed)
 	else:
 		author = ctx.message.author
-    		await ctx.message.delete()
-    		emb = discord.Embed(title=f'Голосование от {author.name}!', description=f'{arg}', color=0xff0000)
-    		message = await ctx.send(embed=emb)
-    		await message.add_reaction('✅')
-    		await message.add_reaction('❌')
+    	await ctx.message.delete()
+    	emb = discord.Embed(title=f'Голосование от {author.name}!', description=f'{arg}', color=0xff0000)
+    	message = await ctx.send(embed=emb)
+    	await message.add_reaction('✅')
+    	await message.add_reaction('❌')
 	
 token = os.environ.get('BOT_TOKEN')
 bot.run(str(token))
