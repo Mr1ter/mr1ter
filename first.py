@@ -21,10 +21,8 @@ async def on_command_error(ctx, error):
 
 # Приветствие
 @bot.command() 
-async def hello(ctx, arg): 
-    author = ctx.message.author 
-
-    await ctx.send(f'Привет, {author.mention}!')
+async def hello(ctx, member: member.Discord):
+	await ctx.send(f'Привет, {member.mention}!')
 
 # Говорилка (доступно только создателю бота)
 @bot.command()
