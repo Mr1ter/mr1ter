@@ -102,12 +102,16 @@ async def kick(ctx, member: discord.Member, *, reason=None):
 # Голосование
 @bot.command()
 async def poll(ctx, *, arg=None):
-    author = ctx.message.author
-    await ctx.message.delete()
-    emb = discord.Embed(title=f'Голосование от {author.name}!', description=f'{arg}', color=0xff0000)
-    message = await ctx.send(embed=emb)
-    await message.add_reaction('✅')
-    await message.add_reaction('❌')
+	if arg==None:
+		embed = discord.Embed(color = 0xff0000, title = 'У-упс...', description='Для голосования должен быть хотя бы введён один символ.')
+		await ctx.send(embed=embed)
+	else:
+		author = ctx.message.author
+    		await ctx.message.delete()
+    		emb = discord.Embed(title=f'Голосование от {author.name}!', description=f'{arg}', color=0xff0000)
+    		message = await ctx.send(embed=emb)
+    		await message.add_reaction('✅')
+    		await message.add_reaction('❌')
 	
 token = os.environ.get('BOT_TOKEN')
 bot.run(str(token))
