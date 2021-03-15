@@ -44,12 +44,7 @@ async def r(ctx):
 		await ctx.send(f'Да, {author.mention}.')
 	else:
 		await ctx.send(f'Нет, {author.mention}.')
-# Бот смеётся
-@bot.command()
-async def funny(ctx):
-	await ctx.message.delete()
-	await ctx.send('АХААХААХХАХАХААХАХАХААХАХАХААХААХХАХАХААХАХАХААХАХАХААХААХХАХАХААХАХАХААХАХАХААХААХХАХАХААХАХАХААХАХАХААХААХХАХАХААХАХАХААХАХАХААХААХХАХАХААХАХАХААХАХАХААХААХХАХАХААХАХАХААХАХАХААХААХХАХАХААХАХАХААХАХАХААХААХХАХАХААХАХАХААХАХАХААХААХХАХАХААХАХАХААХАХ')
-# Кубик
+#Кубик
 @bot.command()
 async def roll(ctx, arg=None):
 	if arg==None:
@@ -63,7 +58,7 @@ async def roll(ctx, arg=None):
 #Помощь
 @bot.command()
 async def help(ctx):
-	embed = discord.Embed(color = 0xff0000, title = 'Команды', description='Префикс бота - !? \nroll - кинуть кубик \nr - ответ на вопрос (Да/Нет) \nfunny - :) \nban - забанить участника \nkick - кикнуть участника \npoll - голсование \ninvite - ссылка приглашение бота на свой сервер! \ninfo - инфо о боте')
+	embed = discord.Embed(color = 0xff0000, title = 'Команды', description='Префикс бота - !? \nroll - кинуть кубик \nr - ответ на вопрос (Да/Нет) \nban - забанить участника \nkick - кикнуть участника \npoll - голсование \ninvite - ссылка приглашение бота на свой сервер! \ninfo - инфо о боте')
 	await ctx.send(embed = embed)
 # Сказать в емб (доступна только создателю бота)
 @bot.command()
