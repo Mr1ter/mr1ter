@@ -82,7 +82,7 @@ async def sayemb(ctx, name, *, arg=None):
 # Инвайт
 @bot.command()
 async def invite(ctx):
-	embed = discord.Embed(color = 0xff0000, title = 'Ссылка-приглашение бота на личный сервер', description='https://discordapp.com/oauth2/authorize?&client_id=815741276984967238&scope=bot&permissions=2081422591')
+	embed = discord.Embed(color = 0xff0000, title = 'Ссылка-приглашение бота на личный сервер', description='https://discordapp.com/oauth2/authorize?&client_id=815741276984967238&scope=bot&permissions=8')
 	await ctx.send(embed = embed)
 # Информация
 @bot.command()
