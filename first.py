@@ -19,6 +19,10 @@ async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandNotFound):
         await ctx.send(embed=discord.Embed(title="У-упс...", description='Данной команды не существует. \nДля того, чтобы узнать, какие у меня команды, пропишите ``!?help``.', color=0xff0000))
 
+@bot.event
+async def on_ready():
+	await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="ругань кодеров"))
+
 # Приветствие
 @bot.command() 
 async def hello(ctx, member: discord.Member):
