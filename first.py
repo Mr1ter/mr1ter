@@ -21,7 +21,7 @@ async def on_command_error(ctx, error):
 
 @bot.event
 async def on_ready():
-	await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="ругань кодеров"))
+	await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="Вас и ждёт Ваших указаний."))
 
 # Приветствие
 @bot.command() 
