@@ -1,7 +1,5 @@
 import discord
 import random
-import json
-import asyncio
 import os
 from discord.ext import commands
 from config import settings
@@ -116,6 +114,18 @@ async def poll(ctx, *, arg=None):
 		message = await ctx.send(embed=emb)
 		await message.add_reaction('✅')
 		await message.add_reaction('❌')
-	
+
+# Очистка сообщений
+@bot.command()
+@commands.has_permissions(administrator=True)
+async def purge(ctx, arg=None):
+	if arg==None:
+		embed = discord.Embed(color=0xff0000, title = 'У-упс...', description='Введите число.')
+		await ctx.send(embed=embed)
+	else:
+		await ctx.channel.purge(limit=int(arg))
+		e = discord.Embed(color=0xff0000, title = 'Done!', description=f'Очищено сообщений: {arg}')
+		await ctx.send(embed = e)
+
 token = os.environ.get('BOT_TOKEN')
 bot.run(str(token))
