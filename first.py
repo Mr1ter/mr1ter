@@ -3,8 +3,6 @@ import random
 import json
 import asyncio
 import os
-from discord.ext import commands
-from config import settings
 from discord.ext import commands,tasks
 from discord.ext.commands import has_permissions, CheckFailure
 
