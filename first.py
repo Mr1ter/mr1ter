@@ -21,11 +21,6 @@ async def on_command_error(ctx, error):
 async def on_ready():
 	await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="Вас и ждёт Ваших указаний."))
 
-# Приветствие
-@bot.command() 
-async def hello(ctx, member: discord.Member):
-	await ctx.send(f'Привет, {member.mention}!')
-
 # Говорилка (доступно только создателю бота)
 @bot.command()
 async def say(ctx, *, arg=None):
