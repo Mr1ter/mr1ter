@@ -4,14 +4,14 @@ import json
 import asyncio
 import os
 from discord.ext import commands,tasks
-from discord.ext.commands import has_permissions, CheckFailure
+from discord.ext.commands import has_permissions, CheckFailure, Bot
 
 bot = commands.Bot(command_prefix = '!?', help_command=None)
 
 @bot.event
 async def on_command_error(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
-        await ctx.send(embed=discord.Embed(title="У-упс...", description='Упомяните пользователя.', color=0xff0000))
+        await ctx.send(embed=discord.Embed(title="У-упс...", description='Упомяните пользователя. \nЕсли хотите разбанить пользователя, то введите его ID.', color=0xff0000))
     if isinstance(error, commands.MissingPermissions):
         await ctx.send(embed=discord.Embed(title="У-упс...", description='У Вас нет прав на использование данной команды.', color=0xff0000))
     if isinstance(error, commands.CommandNotFound):
@@ -119,8 +119,16 @@ async def purge(ctx, arg=None):
 		await ctx.send(embed=embed)
 	else:
 		await ctx.channel.purge(limit=int(arg))
-		e = discord.Embed(color=0xff0000, title = 'Done!', description=f'Очищено сообщений: {arg}')
+		e = discord.Embed(color=0xff0000, title = None, description=f'Очищено сообщений: {arg}')
 		await ctx.send(embed = e)
+
+#Разбан
+@bot.command()
+@commands.has_permissions(ban_members=True)
+async def unban(ctx, id: int):
+		user = await bot.fetch_user(id)
+		await ctx.guild.unban(user)
+		await ctx.send(embed=discord.Embed(color=0xff0000, title = None, description=f'Пользователь с ID {id} разбанен.'))
 
 token = os.environ.get('BOT_TOKEN')
 bot.run(str(token))
