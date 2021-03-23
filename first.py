@@ -118,6 +118,7 @@ async def purge(ctx, arg=None):
 		embed = discord.Embed(color=0xff0000, title = 'У-упс...', description='Введите число.')
 		await ctx.send(embed=embed)
 	else:
+		await ctx.message.delete()
 		await ctx.channel.purge(limit=int(arg))
 		e = discord.Embed(color=0xff0000, title = None, description=f'Очищено сообщений: {arg}')
 		await ctx.send(embed = e)
