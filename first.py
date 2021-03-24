@@ -24,6 +24,7 @@ async def on_ready():
 # Текст от имени бота
 @bot.command()
 @commands.has_permissions(administrator=True)
+async def say(ctx, *, arg=None):
 	await ctx.message.delete()
 	await ctx.send(arg)
 	
