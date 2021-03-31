@@ -11,7 +11,7 @@ bot = commands.Bot(command_prefix = '!?', help_command=None)
 @bot.event
 async def on_command_error(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
-        await ctx.send(embed=discord.Embed(title="У-упс...", description='Упомяните пользователя. \nЕсли хотите разбанить пользователя, то введите его ID.', color=0xff0000))
+        await ctx.send(embed=discord.Embed(title="У-упс...", description='Упомяните пользователя.', color=0xff0000))
     if isinstance(error, commands.MissingPermissions):
         await ctx.send(embed=discord.Embed(title="У-упс...", description='У Вас нет прав на использование данной команды.', color=0xff0000))
     if isinstance(error, commands.CommandNotFound):
@@ -57,7 +57,7 @@ async def roll(ctx, arg=None):
 #Помощь
 @bot.command()
 async def help(ctx):
-	embed = discord.Embed(color = 0xff0000, title = 'Команды', description='Префикс бота - !? \n[] - данные скобки писать не надо. Они нужны, чтобы обозначить функцию. \n \nКоманды модерирования: \nban [@пинг] [Причина] - забанить участника (нужно право на бан) \nunban [ID] - разбанить участника (нужно право на бан) \nkick [@пинг] [Причина] - кикнуть участника (нужно право на кик) \npurge [число] - очистить канал от сообщений (нужно право на управление сообщениями) \n \nРазвлекательные команды: \nroll [число] - кинуть кубик \nr [Вопрос] - ответ на вопрос \npoll [Текст] - голсование \nsay [Текст] - сказать что-то от имени бота (нужны права администратора) \nsayemb [Жирный/Тонкий] [Текст] - сказать в ембед оформлении (нужны права администратора) \n \nРазное:  \ninvite - ссылка приглашение бота на свой сервер! \ninfo - инфо о боте')
+	embed = discord.Embed(color = 0xff0000, title = 'Команды', description='Префикс бота - !? \n[] - данные скобки писать не надо. Они нужны, чтобы обозначить функцию. \n \nКоманды модерирования: \nban [@пинг] [Причина] - забанить участника (нужно право на бан) \nunban [ID] - разбанить участника (нужно право на бан) \nkick [@пинг] [Причина] - кикнуть участника (нужно право на кик) \npurge [число] - очистить канал от сообщений (нужно право на управление сообщениями) \n \nРП-команды: \nhead [@пинг] - кивнуть кому-то головой \ncrazy - психануть \nanonimus - надеть маску анонимуса \ngoaway [@пинг] - послать обидчика \nkill [@пинг] - убить кого-то \nhyp [@пинг] - загипнотизировать кого-то \n \nРазвлекательные команды: \nroll [число] - кинуть кубик \nr [Вопрос] - ответ на вопрос \npoll [Текст] - голсование \nsay [Текст] - сказать что-то от имени бота (нужны права администратора) \nsayemb [Жирный/Тонкий] [Текст] - сказать в ембед оформлении (нужны права администратора) \n \nРазное:  \ninvite - ссылка приглашение бота на свой сервер! \ninfo - инфо о боте')
 	await ctx.send(embed = embed)
 
 # Сказать в емб (доступна только создателю бота)
@@ -132,6 +132,48 @@ async def unban(ctx, id: int):
 		user = await bot.fetch_user(id)
 		await ctx.guild.unban(user)
 		await ctx.send(embed=discord.Embed(color=0xff0000, title = None, description=f'Пользователь с ID {id} разбанен.'))
+		
+@bot.command()
+async def crazy(ctx):
+    author = ctx.message.author
+    embed = discord.Embed(color = 0xff0000, description = f'{author.mention} психанул.')
+    embed.set_image(url = "https://i.gifer.com/ENXv.gif")
+    await ctx.send(embed = embed)
+
+@bot.command()
+async def head(ctx, member: discord.Member):
+    author = ctx.message.author
+    embed = discord.Embed(color = 0xff0000, description = f'{author.mention} кивнул головой {member.mention}')
+    embed.set_image(url = "https://i.gifer.com/LwNv.gif")
+    await ctx.send(embed = embed)
+
+@bot.command()
+async def anonimus(ctx):
+    author = ctx.message.author
+    embed = discord.Embed(color = 0xff0000, description = f'{author.mention} надел маску анонимуса. :detective:')
+    embed.set_image(url = "https://psv4.userapi.com/c856416/u219487836/docs/d7/9aabe43513e2/ezgif-4-de468947b54e.gif?extra=zAIKySqs7ruNkuMJj5JPTPs6CpIy4umLj1hEQROqWsMuGEW2Dtxgb282vXaoAFPTz8wizENeyhJoawX740WhFKW-A_PHxHxXsaPHA87cGC88fnYzaGiaFBzHczsbxXoArcvnf0-cTXUM6pm5G5w4_WsPJA")
+    await ctx.send(embed = embed)
+
+@bot.command()
+async def goaway(ctx, member: discord.Member):
+    author = ctx.message.author
+    embed = discord.Embed(color = 0xff0000, description = f'{author.mention} послал к чёрту {member.mention}')
+    embed.set_image(url = "https://i.gifer.com/OVO.gif")
+    await ctx.send(embed = embed)
+
+@bot.command()
+async def kill(ctx, member: discord.Member):
+    author = ctx.message.author
+    embed = discord.Embed(color = 0xff0000, description = f'{author.mention} убил {member.mention}')
+    embed.set_image(url = "https://i.gifer.com/7jkI.gif")
+    await ctx.send(embed = embed)
+
+@bot.command()
+async def hyp(ctx, member: discord.Member):
+    author = ctx.message.author
+    embed = discord.Embed(color = 0xff0000, description = f'{author.mention} загипнотизировал {member.mention}')
+    embed.set_image(url = "https://i.gifer.com/fz50.gif")
+    await ctx.send(embed = embed)
 
 token = os.environ.get('BOT_TOKEN')
 bot.run(str(token))
