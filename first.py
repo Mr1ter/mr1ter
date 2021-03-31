@@ -19,7 +19,13 @@ async def on_command_error(ctx, error):
 
 @bot.event
 async def on_ready():
-	await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="Вас и ждёт Ваших указаний."))
+    while True:
+        await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="Вас и ждёт Ваших указаний."))
+        await asyncio.sleep(10)
+        await bot.change_presence(activity = discord.Activity(type = discord.ActivityType.watching, name = "на команды"))
+        await asyncio.sleep(10)
+        await bot.change_presence(activity=discord.Game(name="помощь: !?help"))
+        await asyncio.sleep(10)
 
 # Текст от имени бота
 @bot.command()
@@ -53,6 +59,7 @@ async def roll(ctx, arg=None):
 async def help(ctx):
 	embed = discord.Embed(color = 0xff0000, title = 'Команды', description='Префикс бота - !? \n[] - данные скобки писать не надо. Они нужны, чтобы обозначить функцию. \n \nКоманды модерирования: \nban [@пинг] [Причина] - забанить участника (нужно право на бан) \nunban [ID] - разбанить участника (нужно право на бан) \nkick [@пинг] [Причина] - кикнуть участника (нужно право на кик) \npurge [число] - очистить канал от сообщений (нужно право на управление сообщениями) \n \nРазвлекательные команды: \nroll [число] - кинуть кубик \nr [Вопрос] - ответ на вопрос \npoll [Текст] - голсование \nsay [Текст] - сказать что-то от имени бота (нужны права администратора) \nsayemb [Жирный/Тонкий] [Текст] - сказать в ембед оформлении (нужны права администратора) \n \nРазное:  \ninvite - ссылка приглашение бота на свой сервер! \ninfo - инфо о боте')
 	await ctx.send(embed = embed)
+
 # Сказать в емб (доступна только создателю бота)
 @bot.command()
 @commands.has_permissions(administrator=True)
