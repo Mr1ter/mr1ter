@@ -186,7 +186,7 @@ async def readrap(ctx):
 async def steal(ctx, member: discord.Member):
     author = ctx.message.author
     embed = discord.Embed(color = 0xff0000, description = f'{author.mention} стянул маску анонимуса с {member.mention}')
-    embed.set_image(url = "https://tenor.com/view/anonymous-hacker-hack-hacking-gif-8722324")
+    embed.set_image(url = "https://psv4.userapi.com/c537232/u467520766/docs/d41/333fc8d93332/tenor.gif?extra=BZ3m8dl7F8noOwO5Xu-k_c62uZqnskd65e5f_vhvYxLYrpRnO6NkesyNLpwkrg1zrkNeS-N07sAku2X4tzPle8FIvNr6gIPk7SBR38hbcrmHF-1gd-lQ4bm3KBsqtMCFFOY4nGtsQZRQN2lXOVU6zFA")
     await ctx.send(embed = embed)
 
 token = os.environ.get('BOT_TOKEN')
