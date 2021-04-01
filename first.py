@@ -175,5 +175,12 @@ async def hyp(ctx, member: discord.Member):
     embed.set_image(url = "https://i.gifer.com/fz50.gif")
     await ctx.send(embed = embed)
 
+@bot.command()
+async def readrap(ctx):
+    author = ctx.message.author
+    embed = discord.Embed(color = 0xff0000, description = f'{author.mention}  анонимно зачитал рэп. :sunglasses:')
+    embed.set_image(url = "https://i.gifer.com/1ptJ.gif")
+    await ctx.send(embed = embed)
+
 token = os.environ.get('BOT_TOKEN')
 bot.run(str(token))
