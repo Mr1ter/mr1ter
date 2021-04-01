@@ -57,7 +57,7 @@ async def roll(ctx, arg=None):
 #Помощь
 @bot.command()
 async def help(ctx):
-	embed = discord.Embed(color = 0xff0000, title = 'Команды', description='Префикс бота - !? \n[] - данные скобки писать не надо. Они нужны, чтобы обозначить функцию. \n \nКоманды модерирования: \nban [@пинг] [Причина] - забанить участника (нужно право на бан) \nunban [ID] - разбанить участника (нужно право на бан) \nkick [@пинг] [Причина] - кикнуть участника (нужно право на кик) \npurge [число] - очистить канал от сообщений (нужно право на управление сообщениями) \n \nРП-команды: \nhead [@пинг] - кивнуть кому-то головой \ncrazy - психануть \nanonimus - надеть маску анонимуса \ngoaway [@пинг] - послать обидчика \nkill [@пинг] - убить кого-то \nhyp [@пинг] - загипнотизировать кого-то \nreadrap - зачитать рэп :sunglasses: \nsteal - стянуть с кого-то маску \n \nРазвлекательные команды: \nroll [число] - кинуть кубик \nr [Вопрос] - ответ на вопрос \npoll [Текст] - голсование \nsay [Текст] - сказать что-то от имени бота (нужны права администратора) \nsayemb [Жирный/Тонкий] [Текст] - сказать в ембед оформлении (нужны права администратора) \n \nРазное:  \ninvite - ссылка приглашение бота на свой сервер! \ninfo - инфо о боте')
+	embed = discord.Embed(color = 0xff0000, title = 'Команды', description='Префикс бота - !? \n[] - данные скобки писать не надо. Они нужны, чтобы обозначить функцию. \n \nКоманды модерирования: \nban [@пинг] [Причина] - забанить участника (нужно право на бан) \nunban [ID] - разбанить участника (нужно право на бан) \nkick [@пинг] [Причина] - кикнуть участника (нужно право на кик) \npurge [число] - очистить канал от сообщений (нужно право на управление сообщениями) \n \nРП-команды: \nhead [@пинг] - кивнуть кому-то головой \ncrazy - психануть \nanonimus - надеть маску анонимуса \ngoaway [@пинг] - послать обидчика \nkill [@пинг] - убить кого-то \nhyp [@пинг] - загипнотизировать кого-то \nreadrap - зачитать рэп :sunglasses: \nsteal [@пинг] - стянуть с кого-то маску \npat [@пинг] - погладить кого-то \n \nРазвлекательные команды: \nroll [число] - кинуть кубик \nr [Вопрос] - ответ на вопрос \npoll [Текст] - голсование \nsay [Текст] - сказать что-то от имени бота (нужны права администратора) \nsayemb [Жирный/Тонкий] [Текст] - сказать в ембед оформлении (нужны права администратора) \n \nРазное:  \ninvite - ссылка приглашение бота на свой сервер! \ninfo - инфо о боте')
 	await ctx.send(embed = embed)
 
 # Сказать в емб (доступна только создателю бота)
@@ -189,5 +189,12 @@ async def steal(ctx, member: discord.Member):
     embed.set_image(url = "https://psv4.userapi.com/c537232/u467520766/docs/d41/333fc8d93332/tenor.gif?extra=BZ3m8dl7F8noOwO5Xu-k_c62uZqnskd65e5f_vhvYxLYrpRnO6NkesyNLpwkrg1zrkNeS-N07sAku2X4tzPle8FIvNr6gIPk7SBR38hbcrmHF-1gd-lQ4bm3KBsqtMCFFOY4nGtsQZRQN2lXOVU6zFA")
     await ctx.send(embed = embed)
 
+@bot.command()
+async def pat(ctx, member: discord.Member):
+    author = ctx.message.author
+    embed = discord.Embed(color = 0xff0000, description = f'{author.mention} погладил {member.mention}')
+    embed.set_image(url = "https://psv4.userapi.com/c532036/u467520766/docs/d18/3b4e2c9704ac/1530443619_2.gif?extra=DI9v74Me7Cc8jtztfRmVOQRHw1ogjYrF_Arim-tfQbujoEWwAS78Zb41o4cjsf29nFfJHf0mdW7V_hgIbdft1ISa7esjyISOnTzolU1eOtCKa9L0lpZXcUCRdbSDdRGVBkUAGaOq1jkLmILwkwzcIkA")
+    await ctx.send(embed = embed)
+	
 token = os.environ.get('BOT_TOKEN')
 bot.run(str(token))
