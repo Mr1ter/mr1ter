@@ -57,7 +57,7 @@ async def roll(ctx, arg=None):
 #Помощь
 @bot.command()
 async def help(ctx):
-	embed = discord.Embed(color = 0xff0000, title = 'Команды', description='Префикс бота - !? \n[] - данные скобки писать не надо. Они нужны, чтобы обозначить функцию. \n \nКоманды модерирования: \nban [@пинг] [Причина] - забанить участника (нужно право на бан) \nunban [ID] - разбанить участника (нужно право на бан) \nkick [@пинг] [Причина] - кикнуть участника (нужно право на кик) \npurge [число] - очистить канал от сообщений (нужно право на управление сообщениями) \n \nРП-команды: \nhead [@пинг] - кивнуть кому-то головой \ncrazy - психануть \nanonimus - надеть маску анонимуса \ngoaway [@пинг] - послать обидчика \nkill [@пинг] - убить кого-то \nhyp [@пинг] - загипнотизировать кого-то \nreadrap - зачитать рэп :sunglasses: \nsteal [@пинг] - стянуть с кого-то маску \npat [@пинг] - погладить кого-то \n \nРазвлекательные команды: \nroll [число] - кинуть кубик \nr [Вопрос] - ответ на вопрос \npoll [Текст] - голсование \nsay [Текст] - сказать что-то от имени бота (нужны права администратора) \nsayemb [Жирный/Тонкий] [Текст] - сказать в ембед оформлении (нужны права администратора) \n \nРазное:  \ninvite - ссылка приглашение бота на свой сервер! \ninfo - инфо о боте')
+	embed = discord.Embed(color = 0xff0000, title = 'Команды', description='Префикс бота - !? \n[] - данные скобки писать не надо. Они нужны, чтобы обозначить функцию. \n \nКоманды модерирования: \nban [@пинг] [Причина] - забанить участника (нужно право на бан) \nunban [ID] - разбанить участника (нужно право на бан) \nkick [@пинг] [Причина] - кикнуть участника (нужно право на кик) \npurge [число] - очистить канал от сообщений (нужно право на управление сообщениями) \nnick [@пинг] [ник] - изменить ник участнику (нужны права на изменение никнеймов) \n \nРП-команды: \nhead [@пинг] - кивнуть кому-то головой \ncrazy - психануть \ngoaway [@пинг] - послать обидчика \nkill [@пинг] - убить кого-то \nhyp [@пинг] - загипнотизировать кого-то \nreadrap - зачитать рэп :sunglasses: \nsteal [@пинг] - стянуть с кого-то маску \npat [@пинг] - погладить кого-то \n \nРазвлекательные команды: \nroll [число] - кинуть кубик \nr [Вопрос] - ответ на вопрос \npoll [Текст] - голсование \nsay [Текст] - сказать что-то от имени бота (нужны права администратора) \nsayemb [Жирный/Тонкий] [Текст] - сказать в ембед оформлении (нужны права администратора) \n \nРазное:  \ninvite - ссылка приглашение бота на свой сервер! \ninfo - инфо о боте')
 	await ctx.send(embed = embed)
 
 # Сказать в емб (доступна только создателю бота)
@@ -148,13 +148,6 @@ async def head(ctx, member: discord.Member):
     await ctx.send(embed = embed)
 
 @bot.command()
-async def anonimus(ctx):
-    author = ctx.message.author
-    embed = discord.Embed(color = 0xff0000, description = f'{author.mention} надел маску анонимуса. :detective:')
-    embed.set_image(url = "https://psv4.userapi.com/c856416/u219487836/docs/d7/9aabe43513e2/ezgif-4-de468947b54e.gif?extra=zAIKySqs7ruNkuMJj5JPTPs6CpIy4umLj1hEQROqWsMuGEW2Dtxgb282vXaoAFPTz8wizENeyhJoawX740WhFKW-A_PHxHxXsaPHA87cGC88fnYzaGiaFBzHczsbxXoArcvnf0-cTXUM6pm5G5w4_WsPJA")
-    await ctx.send(embed = embed)
-
-@bot.command()
 async def goaway(ctx, member: discord.Member):
     author = ctx.message.author
     embed = discord.Embed(color = 0xff0000, description = f'{author.mention} послал к чёрту {member.mention}')
@@ -195,6 +188,14 @@ async def pat(ctx, member: discord.Member):
     embed = discord.Embed(color = 0xff0000, description = f'{author.mention} погладил {member.mention}')
     embed.set_image(url = "https://psv4.userapi.com/c532036/u467520766/docs/d18/3b4e2c9704ac/1530443619_2.gif?extra=DI9v74Me7Cc8jtztfRmVOQRHw1ogjYrF_Arim-tfQbujoEWwAS78Zb41o4cjsf29nFfJHf0mdW7V_hgIbdft1ISa7esjyISOnTzolU1eOtCKa9L0lpZXcUCRdbSDdRGVBkUAGaOq1jkLmILwkwzcIkA")
     await ctx.send(embed = embed)
+	
+@bot.command()
+@commands.has_permissions(manage_nicknames=True)
+async def nick(ctx, member: discord.Member, *, nickname):
+  await member.edit(nick=nickname)
+  embed = discord.Embed(color=0xff0000, title="Done!", description=f'Ник пользователя {member.name} изменён на {nickname}')
+  await ctx.send(embed=embed)
+
 	
 token = os.environ.get('BOT_TOKEN')
 bot.run(str(token))
