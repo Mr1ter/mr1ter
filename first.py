@@ -191,10 +191,14 @@ async def pat(ctx, member: discord.Member):
 	
 @bot.command()
 @commands.has_permissions(manage_nicknames=True)
-async def nick(ctx, member: discord.Member, *, nickname):
-  await member.edit(nick=nickname)
-  embed = discord.Embed(color=0xff0000, title="Done!", description=f'Ник пользователя {member.name} изменён на {nickname}')
-  await ctx.send(embed=embed)
+async def nick(ctx, member: discord.Member, *, nickname=None):
+  if nickname==None:
+    embed = discord.Embed(color = 0xff0000, title = "У-упс...", description="Введите новый никнейм для пользователя.")
+    await ctx.send(embed=embed)
+  else:
+    await member.edit(nick=nickname)
+    embed = discord.Embed(color=0xff0000, title="Done!", description=f'Ник пользователя {member.name} изменён на {nickname}')
+    await ctx.send(embed=embed)
 
 	
 token = os.environ.get('BOT_TOKEN')
