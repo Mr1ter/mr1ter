@@ -127,11 +127,14 @@ async def purge(ctx, arg=None):
 
 #Разбан
 @bot.command()
-@commands.has_permissions(ban_members=True)
-async def unban(ctx, id: int):
-		user = await bot.fetch_user(id)
-		await ctx.guild.unban(user)
-		await ctx.send(embed=discord.Embed(color=0xff0000, title = None, description=f'Пользователь с ID {id} разбанен.'))
+@commands.has_permissions(ban_members = True)
+async def unban(ctx, id: int = None):
+    if id == None:
+        await ctx.send(embed = discord.Embed(title = "У-упс...", description = 'Введите ID пользователя, которого Вы хотите разбанить.', color = 0xff0000))
+    else:
+        user = await bot.fetch_user(id)
+        await ctx.guild.unban(user)
+        await ctx.send(embed = discord.Embed(color = 0xff0000, title = None, description = f'Пользователь с ID {id} разбанен.'))
 
 @bot.command()
 async def anon(ctx):
