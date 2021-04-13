@@ -60,7 +60,7 @@ async def help(ctx):
 	embed = discord.Embed(color = 0xff0000, title = 'Команды', description='Префикс бота - !? \n[] - данные скобки писать не надо. Они нужны, чтобы обозначить функцию. \n \nКоманды модерирования: \nban [@пинг] [Причина] - забанить участника (нужно право на бан) \nunban [ID] - разбанить участника (нужно право на бан) \nkick [@пинг] [Причина] - кикнуть участника (нужно право на кик) \npurge [число] - очистить канал от сообщений (нужно право на управление сообщениями) \nnick [@пинг] [ник] - изменить ник участнику (нужны права на изменение никнеймов) \n \nРП-команды: \nanon - надеть маску анонимуса \nhead [@пинг] - кивнуть кому-то головой \ncrazy - психануть \ngoaway [@пинг] - послать обидчика \nkill [@пинг] - убить кого-то \nhyp [@пинг] - загипнотизировать кого-то \nreadrap - зачитать рэп :sunglasses: \nsteal [@пинг] - стянуть с кого-то маску \npat [@пинг] - погладить кого-то \n \nРазвлекательные команды: \nroll [число] - кинуть кубик \nr [Вопрос] - ответ на вопрос \npoll [Текст] - голсование \nsay [Текст] - сказать что-то от имени бота (нужны права администратора) \nsayemb [Жирный/Тонкий] [Текст] - сказать в ембед оформлении (нужны права администратора) \n \nРазное:  \ninvite - ссылка приглашение бота на свой сервер! \ninfo - инфо о боте')
 	await ctx.send(embed = embed)
 
-# Сказать в емб (доступна только создателю бота)
+# Сказать в емб 
 @bot.command()
 @commands.has_permissions(administrator=True)
 async def sayemb(ctx, name, *, arg=None):
@@ -115,15 +115,17 @@ async def poll(ctx, *, arg=None):
 # Очистка сообщений
 @bot.command()
 @commands.has_permissions(manage_messages=True)
-async def purge(ctx, arg=None):
-	if arg==None:
+async def purge(ctx, arg=None):	
+	if arg==None:		
 		embed = discord.Embed(color=0xff0000, title = 'У-упс...', description='Введите число.')
-		await ctx.send(embed=embed)
-	else:
-		await ctx.message.delete()
-		await ctx.channel.purge(limit=int(arg))
-		e = discord.Embed(color=0xff0000, title = None, description=f'Очищено сообщений: {arg}')
-		await ctx.send(embed = e)
+		await ctx.send(embed=embed)	
+	else:		
+		await ctx.message.delete()		
+		await ctx.channel.purge(limit=int(arg))		
+		e = discord.Embed(color=0xff0000, title = None, description=f'Очищено сообщений: {arg}')		
+		msg = await ctx.send(embed = e)
+		await asyncio.sleep(10)
+		await msg.delete()
 
 #Разбан
 @bot.command()
@@ -138,6 +140,7 @@ async def unban(ctx, id: int = None):
 
 @bot.command()
 async def anon(ctx):
+    await ctx.message.delete()
     author = ctx.message.author
     embed = discord.Embed(color = 0xff0000, description = f'{author.mention} надел маску анонимуса.')
     embed.set_image(url = "https://media1.tenor.com/images/7f93abaaad9c81a5259d9e23ff1f7387/tenor.gif?itemid=21086303")
@@ -145,6 +148,7 @@ async def anon(ctx):
 		
 @bot.command()
 async def crazy(ctx):
+    await ctx.message.delete()
     author = ctx.message.author
     embed = discord.Embed(color = 0xff0000, description = f'{author.mention} психанул.')
     embed.set_image(url = "https://media.tenor.com/images/01c5ae075fded0333a19a47327f7d34e/tenor.gif")
@@ -152,6 +156,7 @@ async def crazy(ctx):
 
 @bot.command()
 async def head(ctx, member: discord.Member):
+    await ctx.message.delete()
     author = ctx.message.author
     embed = discord.Embed(color = 0xff0000, description = f'{author.mention} кивнул головой {member.mention}')
     embed.set_image(url = "https://media1.tenor.com/images/6dcf202b55e975d31dc53b3472939ec7/tenor.gif?itemid=21086444")
@@ -159,6 +164,7 @@ async def head(ctx, member: discord.Member):
 
 @bot.command()
 async def goaway(ctx, member: discord.Member):
+    await ctx.message.delete()
     author = ctx.message.author
     embed = discord.Embed(color = 0xff0000, description = f'{author.mention} послал к чёрту {member.mention}')
     embed.set_image(url = "https://media1.tenor.com/images/0199532a38dabaf2a172fc01983779ba/tenor.gif?itemid=21086433")
@@ -166,6 +172,7 @@ async def goaway(ctx, member: discord.Member):
 
 @bot.command()
 async def kill(ctx, member: discord.Member):
+    await ctx.message.delete()
     author = ctx.message.author
     embed = discord.Embed(color = 0xff0000, description = f'{author.mention} убил {member.mention}')
     embed.set_image(url = "https://media1.tenor.com/images/8b7ce78b6a6322bc9756787078f6edb7/tenor.gif?itemid=21086360")
@@ -173,6 +180,7 @@ async def kill(ctx, member: discord.Member):
 
 @bot.command()
 async def hyp(ctx, member: discord.Member):
+    await ctx.message.delete()
     author = ctx.message.author
     embed = discord.Embed(color = 0xff0000, description = f'{author.mention} загипнотизировал {member.mention}')
     embed.set_image(url = "https://media.tenor.com/images/1e59b308fd24980cea8363122c8c0d30/tenor.gif")
@@ -180,6 +188,7 @@ async def hyp(ctx, member: discord.Member):
 
 @bot.command()
 async def readrap(ctx):
+    await ctx.message.delete()
     author = ctx.message.author
     embed = discord.Embed(color = 0xff0000, description = f'{author.mention}  анонимно зачитал рэп. :sunglasses:')
     embed.set_image(url = "https://media.tenor.com/images/7312df4d5106d173949fe7099aee1c6a/tenor.gif")
@@ -187,6 +196,7 @@ async def readrap(ctx):
 
 @bot.command()
 async def steal(ctx, member: discord.Member):
+    await ctx.message.delete()
     author = ctx.message.author
     embed = discord.Embed(color = 0xff0000, description = f'{author.mention} стянул маску анонимуса с {member.mention}')
     embed.set_image(url = "https://media.tenor.com/images/d5ae5f2d8f12528c9e126ef7c9a411c9/tenor.gif")
@@ -194,6 +204,7 @@ async def steal(ctx, member: discord.Member):
 
 @bot.command()
 async def pat(ctx, member: discord.Member):
+    await ctx.message.delete()
     author = ctx.message.author
     embed = discord.Embed(color = 0xff0000, description = f'{author.mention} погладил {member.mention}')
     embed.set_image(url = "https://media1.tenor.com/images/45a2ab1d40f7b1006e3871654828bbe8/tenor.gif?itemid=21086521")
