@@ -108,7 +108,8 @@ async def kick(ctx, member: discord.Member, *, reason=None):
 	else:
 		e=discord.Embed(color=0xff0000, title=None, description=f'{member.mention} кикнут! Причина: {reason}.')
 		await ctx.send(embed=e)
-		await member.kick(reason=reason) 
+		await member.kick(reason=reason)
+
 # Голосование
 @bot.command()
 async def poll(ctx, *, arg=None):
