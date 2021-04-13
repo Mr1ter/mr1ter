@@ -133,7 +133,7 @@ async def purge(ctx, arg=None):
 	else:		
 		await ctx.message.delete()		
 		await ctx.channel.purge(limit=int(arg))		
-		e = discord.Embed(color=0xff0000, title = None, description=f'Очищено сообщений: {arg}')		
+		e = discord.Embed(color=0xff0000, description=f'Очищено сообщений: {arg}')		
 		msg = await ctx.send(embed = e)
 		await asyncio.sleep(10)
 		await msg.delete()
