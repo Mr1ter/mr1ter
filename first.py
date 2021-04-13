@@ -84,20 +84,31 @@ async def invite(ctx):
 async def info(ctx):
 	embed = discord.Embed(color = 0xff0000, title = 'Информация', description='Ссылка на официальный сервер бота: https://discord.gg/rHMzm33DDD')
 	await ctx.send(embed = embed)
+
 # Бан
 @bot.command()
 @commands.has_permissions(ban_members=True)
 async def ban(ctx, member: discord.Member, *, reason=None):
-	e=discord.Embed(color=0xff0000, title=None, description=f'{member.mention} забанен! Причина: {reason}.')
-	await ctx.send(embed=e)
-	await member.ban(reason=reason)
+	if reason==None:
+		e=discord.Embed(color=0xff0000, title=None, description=f'{member.mention} забанен!')
+		await ctx.send(embed=e)
+		await member.ban(reason=reason)
+	else:
+		e=discord.Embed(color=0xff0000, title=None, description=f'{member.mention} забанен! Причина: {reason}.')
+		await ctx.send(embed=e)
+		await member.ban(reason=reason)
 # Кик
 @bot.command()
 @commands.has_permissions(kick_members=True)
 async def kick(ctx, member: discord.Member, *, reason=None):
-	e=discord.Embed(color=0xff0000, title=None, description=f'{member.mention} кикнут! Причина: {reason}.')
-	await ctx.send(embed=e)
-	await member.kick(reason=reason)
+	if reason==None:
+		e=discord.Embed(color=0xff0000, title=None, description=f'{member.mention} кикнут!')
+		await ctx.send(embed=e)
+		await member.kick(reason=reason)
+	else:
+		e=discord.Embed(color=0xff0000, title=None, description=f'{member.mention} кикнут! Причина: {reason}.')
+		await ctx.send(embed=e)
+		await member.kick(reason=reason) 
 # Голосование
 @bot.command()
 async def poll(ctx, *, arg=None):
