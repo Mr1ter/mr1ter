@@ -90,11 +90,11 @@ async def info(ctx):
 @commands.has_permissions(ban_members=True)
 async def ban(ctx, member: discord.Member, *, reason=None):
 	if reason==None:
-		e=discord.Embed(color=0xff0000, title=None, description=f'{member.mention} забанен!')
+		e=discord.Embed(color=0xff0000, description=f'{member.mention} забанен!')
 		await ctx.send(embed=e)
 		await member.ban(reason=reason)
 	else:
-		e=discord.Embed(color=0xff0000, title=None, description=f'{member.mention} забанен! Причина: {reason}.')
+		e=discord.Embed(color=0xff0000, description=f'{member.mention} забанен! Причина: {reason}.')
 		await ctx.send(embed=e)
 		await member.ban(reason=reason)
 # Кик
@@ -102,11 +102,11 @@ async def ban(ctx, member: discord.Member, *, reason=None):
 @commands.has_permissions(kick_members=True)
 async def kick(ctx, member: discord.Member, *, reason=None):
 	if reason==None:
-		e=discord.Embed(color=0xff0000, title=None, description=f'{member.mention} кикнут!')
+		e=discord.Embed(color=0xff0000, description=f'{member.mention} кикнут!')
 		await ctx.send(embed=e)
 		await member.kick(reason=reason)
 	else:
-		e=discord.Embed(color=0xff0000, title=None, description=f'{member.mention} кикнут! Причина: {reason}.')
+		e=discord.Embed(color=0xff0000, description=f'{member.mention} кикнут! Причина: {reason}.')
 		await ctx.send(embed=e)
 		await member.kick(reason=reason)
 
