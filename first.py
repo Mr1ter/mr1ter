@@ -82,7 +82,7 @@ async def invite(ctx):
 # Информация
 @bot.command()
 async def info(ctx):
-	embed = discord.Embed(color = 0xff0000, title = 'Информация', description='Ссылка на официальный сервер бота: https://discord.gg/rHMzm33DDD')
+	embed = discord.Embed(color = 0xff0000, title = 'Информация', description='Ссылка на официальный сервер бота: https://discord.gg/rHMzm33DDD \nРазработка бота временно приостановлена.')
 	await ctx.send(embed = embed)
 
 # Бан
